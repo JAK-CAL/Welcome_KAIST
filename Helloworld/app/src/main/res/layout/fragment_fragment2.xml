@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> 26c1ae9a508c9b2dc81b3896b1c1b1934482ac1f
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment2">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".fragment1"
+    tools:showIn="@layout/activity_main">
 
+<<<<<<< HEAD
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
@@ -117,5 +124,13 @@
 
         </LinearLayout>
     </ScrollView>
+=======
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menulistfragment"
+        android:name="com.example.hello_world.fragment2"
+        tools:layout="@layout/activity_main" />
+>>>>>>> 26c1ae9a508c9b2dc81b3896b1c1b1934482ac1f
 
-</FrameLayout>
+</RelativeLayout>
