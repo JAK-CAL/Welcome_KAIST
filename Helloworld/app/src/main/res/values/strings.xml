@@ -2,4 +2,35 @@
     <string name="app_name">Hello-world</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="imagetitle">건설및환경공학과</string>
+    <string name="imagedetail">Civil and Environmental Engineering</string>
+    <string name="imagetitle2">기계공학과</string>
+    <string name="imagedetail2">Mechanical Engineering</string>
+    <string name="imagetitle3">기술경영학부</string>
+    <string name="imagedetail3">School of Business and Technology Management</string>
+    <string name="imagetitle4">바이오및뇌공학과</string>
+    <string name="imagedetail4">Bio and Brain Engineering</string>
+    <string name="imagetitle5">산업디자인학과</string>
+    <string name="imagedetail5">Industrial Design</string>
+    <string name="imagetitle6">산업및시스템공학과</string>
+    <string name="imagedetail6">Industrial and Systems Engineering</string>
+    <string name="imagetitle7">생명과학과</string>
+    <string name="imagedetail7">Biological Sciences</string>
+    <string name="imagetitle8">생명화학공학과</string>
+    <string name="imagedetail8">Chemical and Biomolecular Engineering</string>
+    <string name="imagetitle9">수리과학과</string>
+    <string name="imagedetail9">Mathematical Sciences</string>
+    <string name="imagetitle10">신소재공학과</string>
+    <string name="imagedetail10">Materials Science and Engineering</string>
+    <string name="imagetitle11">원자력및양자공학과</string>
+    <string name="imagedetail11">Nuclear and Quantum Engineering</string>
+    <string name="imagetitle12">전기및전자공학부</string>
+    <string name="imagedetail12">Electrical Engineering</string>
+    <string name="imagetitle13">전산학부</string>
+    <string name="imagedetail13">School of Computing</string>
+    <string name="imagetitle14">항공우주공학과</string>
+    <string name="imagedetail14">Aerospace Engineering</string>
+    <string name="imagetitle15">화학과</string>
+    <string name="imagedetail15">Chemistry</string>
+
 </resources>

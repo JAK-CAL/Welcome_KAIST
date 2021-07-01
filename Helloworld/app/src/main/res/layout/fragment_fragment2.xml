@@ -1,15 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment2">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#2196F3"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="710dp"
+        android:layout_marginTop="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/civil_and_environmental_engineering"
+                android:contentDescription="@string/imagedetail"/>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/mechanical_engineering"
+                android:contentDescription="@string/imagedetail2"/>
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/school_of_business_and_technology_management"
+                android:contentDescription="@string/imagedetail3"/>
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/bio_and_brain_engineering"
+                android:contentDescription="@string/imagedetail4"/>
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/industrial_design"
+                android:contentDescription="@string/imagedetail5"/>
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/biological_sciences"
+                android:contentDescription="@string/imagedetail7"/>
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/chemical_and_biomolecular_engineering"
+                android:contentDescription="@string/imagedetail8"/>
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/mathematical_sciences"
+                android:contentDescription="@string/imagedetail9"/>
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/materials_science_and_engineering"
+                android:contentDescription="@string/imagedetail10"/>
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/nuclear_and_quantum_engineering"
+                android:contentDescription="@string/imagedetail11"/>
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/electrical_engineering"
+                android:contentDescription="@string/imagedetail12"/>
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/school_of_computing"
+                android:contentDescription="@string/imagedetail13"/>
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/aerospace_engineering"
+                android:contentDescription="@string/imagedetail14"/>
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="283dp"
+                android:layout_height="189dp"
+                android:src="@drawable/chemistry"
+                android:contentDescription="@string/imagedetail15"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
