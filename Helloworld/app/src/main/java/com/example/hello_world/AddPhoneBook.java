@@ -1,12 +1,14 @@
 package com.example.hello_world;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceManager;
 
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +41,7 @@ public class AddPhoneBook extends Activity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "연락처를 저장합니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "연락처를 주소록에 저장합니다.", Toast.LENGTH_LONG).show();
 
                 String ID = idEdit.getText().toString();
                 String depart = departEdit.getText().toString();
@@ -66,9 +68,22 @@ public class AddPhoneBook extends Activity {
                     addressInfo.setJob(job);
 
                     databaseHelper.insertAddressData(addressInfo);
-
-
                 **/
+                // Creates a new Intent to insert a contact
+                Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
+                // Sets the MIME type to match the Contacts Provider
+
+                intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+                //호출 후, 연락처앱에서 전달되는 결과물을 받기 위해 startActivityForResult로 실행한다.
+                // Inserts an email address
+                intent.putExtra(ContactsContract.Intents.Insert.NAME, ID)
+                        .putExtra(ContactsContract.Intents.Insert.COMPANY, depart)
+                        .putExtra(ContactsContract.Intents.Insert.EMAIL, email)
+                        .putExtra(ContactsContract.Intents.Insert.PHONE, phonenumber);
+
+
+                startActivityForResult(intent, 10);
+
                 setResult(RESULT_OK);
                 finish();
             }
@@ -82,6 +97,7 @@ public class AddPhoneBook extends Activity {
             }
         });
     }
+
         /*
         void showDialog() {
 

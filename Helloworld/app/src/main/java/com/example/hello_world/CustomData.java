@@ -5,6 +5,15 @@ public class CustomData {
         private String name;
         private String department;
         private String phone;
+        private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getName() {
         return name;
@@ -30,10 +39,11 @@ public class CustomData {
         this.phone = phone;
     }
 
-    public CustomData(String name, String department, String phone) {
+    public CustomData(String name, String department, String phone, String email) {
         this.name = name;
         this.department = department;
         this.phone = phone;
+        this.email = email;
     }
 }
 

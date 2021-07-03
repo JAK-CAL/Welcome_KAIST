@@ -22,14 +22,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         protected TextView name;
         protected TextView department;
         protected TextView phone;
+        protected TextView email;
 
         public CustomViewHolder(View view) {
             super(view);
-            this.name = (TextView) view.findViewById(R.id.id_listitem);
-            this.department = (TextView) view.findViewById(R.id.english_listitem);
-            this.phone = (TextView) view.findViewById(R.id.korean_listitem);
+            this.name = (TextView) view.findViewById(R.id.name);
+            this.department = (TextView) view.findViewById(R.id.department);
+            this.phone = (TextView) view.findViewById(R.id.phonenumber);
+            this.email = (TextView) view.findViewById(R.id.email);
         }
+
+
     }
+
+
 
     public CustomAdapter(ArrayList<CustomData> list) {
         this.mList = list;
