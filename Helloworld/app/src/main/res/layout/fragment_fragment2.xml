@@ -10,8 +10,8 @@
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="710dp"
-        android:layout_marginTop="50dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,8 +22,8 @@
                 android:id="@+id/item1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="4dp"
                 android:clickable="true"
-                android:divider="#89EEFF"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="1">
@@ -70,9 +70,8 @@
                 android:id="@+id/item2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="4dp"
                 android:clickable="true"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="2">
@@ -95,9 +94,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor2"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng2"
@@ -117,10 +116,9 @@
 
             <LinearLayout
                 android:id="@+id/item3"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="4dp"
                 android:clickable="true"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
@@ -144,9 +142,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor3"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng3"
@@ -166,11 +164,10 @@
 
             <LinearLayout
                 android:id="@+id/item4"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="4">
@@ -193,9 +190,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor4"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng4"
@@ -215,11 +212,10 @@
 
             <LinearLayout
                 android:id="@+id/item5"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="2">
@@ -242,9 +238,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor5"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng5"
@@ -264,11 +260,10 @@
 
             <LinearLayout
                 android:id="@+id/item6"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="6">
@@ -291,9 +286,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor6"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng6"
@@ -313,11 +308,10 @@
 
             <LinearLayout
                 android:id="@+id/item7"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="7">
@@ -340,9 +334,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor7"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng7"
@@ -362,11 +356,10 @@
 
             <LinearLayout
                 android:id="@+id/item8"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="8">
@@ -377,7 +370,7 @@
                     android:layout_height="142dp"
                     android:contentDescription="@string/imagedetail8"
                     android:src="@drawable/picture8"
-                    android:tag="2" />
+                    android:tag="8" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -389,9 +382,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor8"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng8"
@@ -411,11 +404,10 @@
 
             <LinearLayout
                 android:id="@+id/item9"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="9">
@@ -438,9 +430,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor9"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng9"
@@ -460,11 +452,10 @@
 
             <LinearLayout
                 android:id="@+id/item10"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="10">
@@ -475,7 +466,7 @@
                     android:layout_height="142dp"
                     android:contentDescription="@string/imagedetail10"
                     android:src="@drawable/picture10"
-                    android:tag="2" />
+                    android:tag="11" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -487,9 +478,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor10"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng10"
@@ -509,11 +500,10 @@
 
             <LinearLayout
                 android:id="@+id/item11"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="11">
@@ -536,9 +526,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor11"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng11"
@@ -558,11 +548,10 @@
 
             <LinearLayout
                 android:id="@+id/item12"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="12">
@@ -585,9 +574,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor12"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng12"
@@ -607,11 +596,10 @@
 
             <LinearLayout
                 android:id="@+id/item13"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="13">
@@ -634,9 +622,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor13"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng13"
@@ -656,11 +644,10 @@
 
             <LinearLayout
                 android:id="@+id/item14"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="14">
@@ -683,9 +670,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor14"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng14"
@@ -705,11 +692,10 @@
 
             <LinearLayout
                 android:id="@+id/item15"
-                android:divider="#89EEFF"
-                android:dividerPadding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:layout_marginBottom="4dp"
                 android:onClick="displayPicture"
                 android:orientation="horizontal"
                 android:tag="15">
@@ -732,9 +718,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/imagetitle_kor15"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/imagetitle_eng15"

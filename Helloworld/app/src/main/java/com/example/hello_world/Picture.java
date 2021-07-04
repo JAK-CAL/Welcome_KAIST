@@ -9,17 +9,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 public class Picture extends AppCompatActivity{
+
+    private ViewPager2 sliderViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.picture);
 
-        TextView tv_imagetitle_kor = (TextView)findViewById(R.id.imagetitle_kor2);
-        TextView tv_imagedetail = (TextView)findViewById(R.id.imagedetail2);
+        TextView tv_imagetitle_kor = (TextView)findViewById(R.id.imagetitle_kor);
+        TextView tv_imagedetail = (TextView)findViewById(R.id.imagedetail);
         ImageView iv_picture = (ImageView)findViewById(R.id.picture);
 
         Intent it = getIntent();
@@ -38,8 +41,6 @@ public class Picture extends AppCompatActivity{
         int id_picture = res.getIdentifier("picture" + tag, "drawable", getPackageName());
         Drawable drawable = res.getDrawable(id_picture);
         iv_picture.setBackground(drawable);
-
-
 
     }
 
