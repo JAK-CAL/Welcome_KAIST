@@ -85,7 +85,7 @@ public class fragment1 extends Fragment {
             }
         });
 
-
+        /*
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -121,7 +121,7 @@ public class fragment1 extends Fragment {
             public void onLongClick(View view, int position) {
 
             }
-        }));
+        }));*/
 
         return view;
     }

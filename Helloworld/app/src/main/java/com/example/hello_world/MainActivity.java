@@ -2,9 +2,11 @@ package com.example.hello_world;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,5 +64,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
+    public void displayPicture(View v) {
+        int id = v.getId();
+        LinearLayout layout = (LinearLayout) v.findViewById(id);
+        String tag = (String) layout.getTag();
+
+
+        Intent it = new Intent(this, Picture.class);
+        it.putExtra("it_tag", tag);
+        startActivity(it);
+    }
+
 
 }
