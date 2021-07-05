@@ -1,4 +1,5 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">Hello-world</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -70,4 +71,33 @@ Design(도시/건축계획 및 설계), 교통 분야에 중점을 두고 있으
     <string name="imagetitle_eng15">Chemistry</string>
     <string name="imagedetail15">화학과 좋아요</string>
 
+=======
+    <string name="app_name">KAIST INFO</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="addemail">이메일</string>
+    <string name="addbutton">주소록 및 앱에 저장</string>
+    <string name="addbutton2">뒤로 가기</string>
+    <string name="mainbutton1">연락처 추가</string>
+    <string name="mainbutton2">연락처 가져오기</string>
+    <string name="addphonenumber">전화번호</string>
+    <string name="addname">이름</string>
+    <string name="adddepartment">학부</string>
+    <string name="title_activity_add_phone_book">AddPhoneBook</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="alert_dialog_ok">testing</string>
+    <string name="title_activity_get_address">GetAddress</string>
+    <string-array name = "LAN">
+        <item>"연락처 수정"</item>
+        <item>"연락처 삭제"</item>
+        <item>"전화걸기"</item>
+    </string-array>
+>>>>>>> 91149bd22395e5e53fc1c180f45bbcb9635b6ea9
 </resources>

@@ -51,6 +51,7 @@ public class fragment2 extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+<<<<<<< HEAD
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,23 @@ public class fragment2 extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+=======
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_fragment2, container, false);
+>>>>>>> 91149bd22395e5e53fc1c180f45bbcb9635b6ea9
     }
 
     @Override
