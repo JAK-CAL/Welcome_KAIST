@@ -17,9 +17,11 @@ public class VPAdapter extends FragmentPagerAdapter {
         items.add(new fragment1());
         items.add(new fragment2());
         items.add(new fragment3());
-        itext.add("PhoneBook");
+        items.add(new fragment4());
+        itext.add("contact");
         itext.add("IMAGE");
         itext.add("TEST3");
+        itext.add("MEMORY");
     }
 
     @Override

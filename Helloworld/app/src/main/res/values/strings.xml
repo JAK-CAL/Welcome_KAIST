@@ -95,4 +95,7 @@ Design(도시/건축계획 및 설계), 교통 분야에 중점을 두고 있으
         <item>"연락처 삭제"</item>
         <item>"전화걸기"</item>
     </string-array>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
