@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,6 +56,8 @@ public class fragment4 extends Fragment {
             }
         });
         recyclerView = v.findViewById(R.id.recyclerView);
+
+
         return v;
     }
     @Override
@@ -85,16 +88,18 @@ public class fragment4 extends Fragment {
 
                 adapter = new MultiImageAdapter(uriList, getActivity().getApplicationContext());
                 recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
+                //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+                recyclerView.setLayoutManager(gridLayoutManager);
             }
             else{      // 이미지를 여러장 선택한 경우
                 ClipData clipData = data.getClipData();
                 Log.e("clipData", String.valueOf(clipData.getItemCount()));
 
-                if(clipData.getItemCount() > 10){   // 선택한 이미지가 11장 이상인 경우
-                    Toast.makeText(getActivity().getApplicationContext(), "사진은 10장까지 선택 가능합니다.", Toast.LENGTH_LONG).show();
+                if(clipData.getItemCount() > 20){   // 선택한 이미지가 21장 이상인 경우
+                    Toast.makeText(getActivity().getApplicationContext(), "사진은 20장까지 선택 가능합니다.", Toast.LENGTH_LONG).show();
                 }
-                else{   // 선택한 이미지가 1장 이상 10장 이하인 경우
+                else{   // 선택한 이미지가 1장 이상 20장 이하인 경우
                     Log.e(TAG, "multiple choice");
 
                     for (int i = 0; i < clipData.getItemCount(); i++){
@@ -109,7 +114,9 @@ public class fragment4 extends Fragment {
 
                     adapter = new MultiImageAdapter(uriList, getActivity().getApplicationContext());
                     recyclerView.setAdapter(adapter);   // 리사이클러뷰에 어댑터 세팅
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));     // 리사이클러뷰 수평 스크롤 적용
+                    //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));     // 리사이클러뷰 수평 스크롤 적용
+                    GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+                    recyclerView.setLayoutManager(gridLayoutManager);
                 }
             }
         }

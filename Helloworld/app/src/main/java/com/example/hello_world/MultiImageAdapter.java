@@ -1,12 +1,15 @@
 package com.example.hello_world;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -16,7 +19,7 @@ import java.util.ArrayList;
 public class MultiImageAdapter extends RecyclerView.Adapter<MultiImageAdapter.ViewHolder>{
     private ArrayList<Uri> mData = null ;
     private Context mContext = null ;
-
+    boolean isImageFitToScreen;
     // 생성자에서 데이터 리스트 객체, Context를 전달받음.
     MultiImageAdapter(ArrayList<Uri> list, Context context) {
         mData = list ;
@@ -32,7 +35,17 @@ public class MultiImageAdapter extends RecyclerView.Adapter<MultiImageAdapter.Vi
             super(itemView) ;
 
             // 뷰 객체에 대한 참조.
-            image = itemView.findViewById(R.id.image);
+            image = itemView.findViewById(R.id.galleryimage);
+
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), ZoomedGallery.class);
+                    intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                    v.getContext().startActivity(intent);
+                }
+            });
+
         }
     }
 

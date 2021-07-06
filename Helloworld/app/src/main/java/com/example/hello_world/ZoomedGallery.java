@@ -12,14 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
-public class Picture extends AppCompatActivity{
+public class ZoomedGallery extends AppCompatActivity{
 
     private ViewPager2 sliderViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.picture);
+        setContentView(R.layout.zoomedimage);
 
         TextView tv_imagetitle_kor = (TextView)findViewById(R.id.imagetitle_kor);
         TextView tv_imagedetail = (TextView)findViewById(R.id.imagedetail);
