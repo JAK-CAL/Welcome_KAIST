@@ -153,7 +153,7 @@
 
             <Button
                 android:id="@+id/add"
-                android:layout_width="175dp"
+                android:layout_width="186dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
@@ -161,12 +161,11 @@
 
             <Button
                 android:id="@+id/back"
-                android:layout_width="186dp"
+                android:layout_width="154dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:text="@string/addbutton2"
-                />
+                android:text="@string/addbutton2" />
         </LinearLayout>
 
     </LinearLayout>

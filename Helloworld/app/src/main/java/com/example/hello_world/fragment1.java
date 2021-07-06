@@ -1,34 +1,37 @@
 package com.example.hello_world;
 
-
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.provider.ContactsContract;
-import android.util.AttributeSet;
-import android.view.GestureDetector;
+
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.hello_world.databinding.ActivityMainBinding;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -39,6 +42,41 @@ public class fragment1 extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList mSearchData;
     private int count = 0;
+    CoordinatorLayout coordinatorLayout;
+
+    private void enableSwipeToDeleteAndUndo() {
+        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+                final int position = viewHolder.getAdapterPosition();
+                final CustomData item = mAdapter.getData().get(position);
+
+                mAdapter.removeItem(position);
+
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "Item was removed from the list.", Snackbar.LENGTH_LONG);
+                snackbar.setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        mAdapter.restoreItem(item, position);
+                        mRecyclerView.scrollToPosition(position);
+                    }
+                });
+
+                snackbar.setActionTextColor(Color.YELLOW);
+                snackbar.show();
+
+            }
+        };
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchhelper.attachToRecyclerView(mRecyclerView);
+    }
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,17 +91,73 @@ public class fragment1 extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        coordinatorLayout = view.findViewById(R.id.coordinatorLayout);
+
+        //populateRecyclerView();
+        enableSwipeToDeleteAndUndo();
+
+        SwipeRefreshLayout swipeRefreshLayout= view.findViewById(R.id.swipe_layout);
+
+        swipeRefreshLayout.setColorSchemeResources(
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light
+        );
+
+
+        mAdapter.setOnItemClickListener(new CustomAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(String name,String phone) {
+
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                Dialog alert = alertDialog.create();
+                alertDialog.setTitle(name);
+                alertDialog.setMessage(phone);
+                alertDialog.setIcon(R.drawable.ic_launcher_background);
+                String tel = ("tel:"+phone).replace("-","");
+
+                alertDialog.setPositiveButton("문자", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setType("vnd.android-dir/mms-sms");
+                        intent.putExtra("sms_body", "");
+                        intent.setData(Uri.parse("sms:"+phone));
+                        startActivity(intent);
+
+                    }
+                });
+
+                alertDialog.setNegativeButton("전화", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent("android.intent.action.DIAL", Uri.parse(tel)));
+                    }
+                });
+
+                alertDialog.show();
+            }
+        });
+
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //여기서 새로고침을!!!
+                mAdapter.notifyDataSetChanged();
+
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
         Button buttonInsert = (Button)view.findViewById(R.id.button_insert);
         Button buttonlink = (Button)view.findViewById(R.id.button_link);
         buttonInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                count++;
-                CustomData data = new CustomData(count + "", "Apple" + count, "사과" + count);
-                // mArrayList.add(0, dict); //RecyclerView의 첫 줄에 삽입
-                mSearchData.add(data); // RecyclerView의 마지막 줄에 삽입
-                **/
+
                 Toast.makeText(getActivity(), "새 연락처를 추가합니다.", Toast.LENGTH_LONG).show();
                 // 액티비티 전환 코드
                 Intent intent = new Intent(getActivity(), AddPhoneBook.class);
@@ -84,44 +178,6 @@ public class fragment1 extends Fragment {
                 mAdapter.notifyDataSetChanged();
             }
         });
-
-
-        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                int pos = CustomAdapter.CustomViewHolder
-                // Write your code here
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-
-                if (pos != RecyclerView.NO_POSITION) {
-                    // 데이터 리스트로부터 아이템 데이터 참조.
-                    RecyclerItem item = mData.get(pos) ;
-
-                    // TODO : use item.
-                }
-
-                builder.setTitle(mSearchData.get(position));
-
-                builder.setItems(R.array.LAN, new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int pos)
-                    {
-                        String[] items = getResources().getStringArray(R.array.LAN);
-                        Toast.makeText(getActivity().getApplicationContext(),items[pos],Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
 
         return view;
     }
@@ -160,7 +216,20 @@ public class fragment1 extends Fragment {
             return;
         }
         count++;
-        if (requestCode == 1) {
+        if(requestCode == 0){
+            name = data.getExtras().getString("ID");
+            MobileNumber = data.getExtras().getString("phonenumber");
+            WorkName = data.getExtras().getString("depart");
+            emailID = data.getExtras().getString("email");
+
+            Toast myToast = Toast.makeText(getActivity().getApplicationContext(),
+                    "추가된 연락처 이름 : " + name + "\n연락처 전화번호 : " + MobileNumber
+                            + "\n이메일: " + emailID, Toast.LENGTH_SHORT);
+            myToast.show();
+            mSearchData.add(new CustomData(name,WorkName,MobileNumber,emailID));
+            mAdapter.notifyDataSetChanged();
+        }
+        else if (requestCode == 1) {
             Uri dataUri = data.getData();
             Cursor cursor =  getActivity().getContentResolver().query(dataUri, null, null, null, null);
 
@@ -335,14 +404,18 @@ public class fragment1 extends Fragment {
                     "연락처 이름 : " + name + "\n연락처 전화번호 : " + MobileNumber, Toast.LENGTH_SHORT);
             myToast.show();
             mSearchData.add(new CustomData(name,WorkName,MobileNumber,emailID));
+            mAdapter.notifyDataSetChanged();
         }
     }
+
+
+
 
     private void initDataset() {
         //for Test
         mSearchData = new ArrayList<>();
-        //mSearchData.add(new CustomData("test","hi", "JOY MINI (48/50)",""));
-        //mSearchData.add(new CustomData("anothertest","english", "RALLYIST (5/50)"));
-        //mSearchData.add(new CustomData("tester","hello", "TEST (10/30)"));
+        mSearchData.add(new CustomData("Kimjanghyun","Computer of Science", "010-3646-1933","big01ad@kaist.ac.kr"));
+        mSearchData.add(new CustomData("Lee HoJun","Biological Science", "010-1234-5678","dontknow@unist.ac.kr"));
+        mSearchData.add(new CustomData("tester","Electrical Engineering", "010-8765-4321","abcd@kaist.ac.kr"));
     }
 }

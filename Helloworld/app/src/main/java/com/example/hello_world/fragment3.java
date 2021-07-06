@@ -1,64 +1,159 @@
 package com.example.hello_world;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment3#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.github.tlaabs.timetableview.Schedule;
+import com.github.tlaabs.timetableview.TimetableView;
+
+import java.util.ArrayList;
+import androidx.annotation.Nullable;
+
+
 public class fragment3 extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private Context context;
+    public static final int REQUEST_ADD = 1;
+    public static final int REQUEST_EDIT = 2;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Button addBtn;
+    private Button clearBtn;
+    private Button saveBtn;
+    private Button loadBtn;
 
-    public fragment3() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment3.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static fragment3 newInstance(String param1, String param2) {
-        fragment3 fragment = new fragment3();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private TimetableView timetable;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_fragment3, container, false);
+        context = getContext();
+        addBtn = view.findViewById(R.id.add_btn);
+        clearBtn = view.findViewById(R.id.clear_btn);
+        saveBtn = view.findViewById(R.id.save_btn);
+        loadBtn = view.findViewById(R.id.load_btn);
+
+        timetable = view.findViewById(R.id.timetable);
+        timetable.setHeaderHighlight(2);
+        initView();
+        return view;
+    }
+
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    }
+
+    private void initView(){
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(),EditActivity.class);
+                i.putExtra("mode",REQUEST_ADD);
+                startActivityForResult(i,REQUEST_ADD);
+            }
+        });
+
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timetable.removeAll();
+            }
+        });
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveByPreference(timetable.createSaveData());
+            }
+        });
+        loadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadSavedData();
+            }
+        });
+
+        timetable.setOnStickerSelectEventListener(new TimetableView.OnStickerSelectedListener() {
+            @Override
+            public void OnStickerSelected(int idx, ArrayList<Schedule> schedules) {
+                Intent i = new Intent(context, EditActivity.class);
+                i.putExtra("mode",REQUEST_EDIT);
+                i.putExtra("idx", idx);
+                i.putExtra("schedules", schedules);
+                startActivityForResult(i,REQUEST_EDIT);
+            }
+        });
+    }
+
+    /* @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.add_btn:
+
+            case R.id.clear_btn:
+                timetable.removeAll();
+                break;
+            case R.id.save_btn:
+                saveByPreference(timetable.createSaveData());
+                break;
+            case R.id.load_btn:
+                loadSavedData();
+                break;
+        }
+    }*/
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode){
+            case REQUEST_ADD:
+                if(resultCode == EditActivity.RESULT_OK_ADD){
+                    ArrayList<Schedule> item = (ArrayList<Schedule>)data.getSerializableExtra("schedules");
+                    timetable.add(item);
+                }
+                break;
+            case REQUEST_EDIT:
+                /** Edit -> Submit */
+                if(resultCode == EditActivity.RESULT_OK_EDIT){
+                    int idx = data.getIntExtra("idx",-1);
+                    ArrayList<Schedule> item = (ArrayList<Schedule>)data.getSerializableExtra("schedules");
+                    timetable.edit(idx,item);
+                }
+                /** Edit -> Delete */
+                else if(resultCode == EditActivity.RESULT_OK_DELETE){
+                    int idx = data.getIntExtra("idx",-1);
+                    timetable.remove(idx);
+                }
+                break;
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment3, container, false);
+    /** save timetableView's data to SharedPreferences in json format */
+    private void saveByPreference(String data){
+        SharedPreferences mPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.putString("timetable_demo",data);
+        editor.commit();
+        Toast.makeText(getContext(),"saved!",Toast.LENGTH_SHORT).show();
+    }
+
+    /** get json data from SharedPreferences and then restore the timetable */
+    private void loadSavedData(){
+        timetable.removeAll();
+        SharedPreferences mPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String savedData = mPref.getString("timetable_demo","");
+        if(savedData == null && savedData.equals("")) return;
+        timetable.load(savedData);
+        Toast.makeText(getContext(),"loaded!",Toast.LENGTH_SHORT).show();
     }
 }

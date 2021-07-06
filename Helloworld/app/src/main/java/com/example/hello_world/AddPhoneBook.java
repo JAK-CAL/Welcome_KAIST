@@ -41,51 +41,67 @@ public class AddPhoneBook extends Activity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "연락처를 주소록에 저장합니다.", Toast.LENGTH_LONG).show();
 
                 String ID = idEdit.getText().toString();
                 String depart = departEdit.getText().toString();
                 String phonenumber = numberEdit.getText().toString();
                 String email = emailEdit.getText().toString();
-
+                String alert;
                 editor.putString("ID", ID);
                 editor.putString("depart", depart);
                 editor.putString("phonenumber", phonenumber);
                 editor.putString("email", email);
                 editor.apply();
-                /*
-                if( ID.length() == 0 ) showDialog("Input Name !");
-                else if( depart.length() == 0 ) showDialog("Input Age !");
-                else if( phonenumber.length() == 0 ) showDialog("Input Phone Number!");
-                else if( email.length() == 0 ) showDialog("Input Job !");
-                else{
+
+                if( ID.length() == 0 ) {
+                    alert = "이름을 넣어주세요!";
+                    Toast myToast = Toast.makeText(getApplicationContext(),
+                            alert, Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+                else if( depart.length() == 0 ){
+                    alert = "학부를 넣어주세요!";
+                    Toast myToast = Toast.makeText(getApplicationContext(),
+                            alert, Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+                else if( phonenumber.length() == 0 ) {
+                    alert = "전화번호를 넣어주세요!";
+                    Toast myToast = Toast.makeText(getApplicationContext(),
+                            alert, Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+                else if( email.length() == 0 ) {
+                    alert = "이메일을 넣어주세요!";
+                    Toast myToast = Toast.makeText(getApplicationContext(),
+                            alert, Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+                else {
                     //모두 입력 했을 경우
+                    // Creates a new Intent to insert a contact
+                    Toast.makeText(getApplicationContext(), "연락처를 주소록에 저장합니다.", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
+                    // Sets the MIME type to match the Contacts Provider
+                    Intent Result = new Intent();
+                    intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+                    //호출 후, 연락처앱에서 전달되는 결과물을 받기 위해 startActivityForResult로 실행한다.
+                    // Inserts an email address
+                    intent.putExtra(ContactsContract.Intents.Insert.NAME, ID)
+                            .putExtra(ContactsContract.Intents.Insert.COMPANY, depart)
+                            .putExtra(ContactsContract.Intents.Insert.EMAIL, email)
+                            .putExtra(ContactsContract.Intents.Insert.PHONE, phonenumber);
 
-                    AddressInfo addressInfo = new AddressInfo();
-                    addressInfo.setName(name);
-                    addressInfo.setAge(Integer.parseInt(age));
-                    addressInfo.setPhone(phone);
-                    addressInfo.setJob(job);
+                    startActivityForResult(intent, 10);
 
-                    databaseHelper.insertAddressData(addressInfo);
-                **/
-                // Creates a new Intent to insert a contact
-                Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
-                // Sets the MIME type to match the Contacts Provider
+                    Result.putExtra("ID", ID)
+                            .putExtra("depart", depart)
+                            .putExtra("email", email)
+                            .putExtra("phonenumber", phonenumber);
 
-                intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
-                //호출 후, 연락처앱에서 전달되는 결과물을 받기 위해 startActivityForResult로 실행한다.
-                // Inserts an email address
-                intent.putExtra(ContactsContract.Intents.Insert.NAME, ID)
-                        .putExtra(ContactsContract.Intents.Insert.COMPANY, depart)
-                        .putExtra(ContactsContract.Intents.Insert.EMAIL, email)
-                        .putExtra(ContactsContract.Intents.Insert.PHONE, phonenumber);
-
-
-                startActivityForResult(intent, 10);
-
-                setResult(RESULT_OK);
-                finish();
+                    setResult(RESULT_OK, Result);
+                    finish();
+                }
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
@@ -98,22 +114,4 @@ public class AddPhoneBook extends Activity {
         });
     }
 
-        /*
-        void showDialog() {
-
-            DialogFragment newFragment = DialogF.newInstance(
-
-                    R.string.alert_dialog_two_buttons_title);
-
-            newFragment.show(getFragmentManager(), "dialog");
-
-        }
-        public void doPositiveClick() {
-            // Do stuff here.
-            Log.i("FragmentAlertDialog", "Positive click!");
-        }
-        public void doNegativeClick() {
-            // Do stuff here.
-            Log.i("FragmentAlertDialog", "Negative click!");
-        }**/
 }

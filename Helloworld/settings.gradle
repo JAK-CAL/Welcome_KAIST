@@ -1,2 +1,3 @@
 rootProject.name = "Hello-world"
 include ':app'
+include ':timetableview'

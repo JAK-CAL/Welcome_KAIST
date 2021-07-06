@@ -2,14 +2,17 @@ package com.example.hello_world;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
+
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         alertDialog.setPositiveButton("시작!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
                             }
                         });
                         alertDialog.show();
@@ -57,10 +61,23 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.show();
 
             // Update
-            editor.putBoolean("IS_FIRST_RUN", true);
-            editor.commit();
+            editor.putBoolean("IS_FIRST_RUN", false);
+            editor.apply();
         }
 
     }
+
+
+    public void displayPicture(View v) {
+        int id = v.getId();
+        LinearLayout layout = (LinearLayout) v.findViewById(id);
+        String tag = (String) layout.getTag();
+
+
+        Intent it = new Intent(this, Picture.class);
+        it.putExtra("it_tag", tag);
+        startActivity(it);
+    }
+
 
 }
